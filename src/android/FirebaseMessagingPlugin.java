@@ -98,7 +98,7 @@ public class FirebaseMessagingPlugin extends ReflectiveCordovaPlugin {
 
     @CordovaMethod
     private void getToken(String type, final CallbackContext callbackContext) {
-        if (type != null && type.isEmpty()) {
+        if (type != null || type.isEmpty()) {
             firebaseMessaging.getToken().addOnCompleteListener(cordova.getActivity(), task -> {
                 if (task.isSuccessful()) {
                     callbackContext.success(task.getResult());
